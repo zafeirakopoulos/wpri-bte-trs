@@ -1,0 +1,120 @@
+%% BTE Technical Report Series LaTeX package
+%% Copyright 2017 Zafeirakis Zafeirakopoulos
+%% zafeirakopoulos@gtu.edu.tr
+  %
+  % This work may be distributed and/or modified under the
+  % conditions of the LaTeX Project Public License, either version 1.3
+  % of this license or (at your option) any later version.
+  % The latest version of this license is in
+  %   http://www.latex-project.org/lppl.txt
+  % and version 1.3 or later is part of all distributions of LaTeX
+  % version 2005/12/01 or later.
+  %
+  % This work has the LPPL maintenance status `maintained'.
+  % 
+  % The Current Maintainer of this work is Zafeirakis Zafeirakopoulos.
+  %
+
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Identification    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{btetrs}[2017/07/14 BTE Technical Report Series LaTeX package]
+  
+ 
+\RequirePackage{fullpage}
+\RequirePackage{graphicx}
+\RequirePackage{xparse,xstring}
+        
+        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%   Headers and Footers   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+\usepackage{fancyhdr}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Frontpage     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\define@key{frontpage}{title}{\def\mm@title{#1}}
+\define@key{frontpage}{authors}{\def\mm@authors{#1}}
+\define@key{frontpage}{date}{\def\mm@date{#1}}
+\define@key{frontpage}{trnumber}{\def\mm@trnumber{#1}}
+\define@key{frontpage}{funding}{\def\mm@funding{#1}}
+\define@key{frontpage}{reviewer}{\def\mm@reviewer{#1}}
+ 
+\DeclareDocumentCommand{\frontpage}{m}{%
+\begingroup%
+  \setkeys{frontpage}{
+  title={},
+  authors={},
+  date={},
+  trnumber={},
+  funding={},
+  reviewer={}
+  ,#1 } %
+
+  \pagestyle{empty}
+  
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[scale=0.45]{gtu.png}  
+  \end{minipage}
+  \begin{minipage}{0.68\textwidth}
+    \LARGE \bf \centering
+    \vskip 0.8em
+    Bili\c{s}im Teknolojileri Enstit\"{u}s\"{u} \\
+    \vskip 0.5em
+    Institute of Information Technologies
+  \end{minipage}
+  
+  \begin{minipage}{\textwidth}
+   \centering
+   \vspace*{3em}
+   \LARGE \bf Bili\c{s}im Teknolojileri Enstit\"{u}s\"{u} Technical Report Series
+  \end{minipage}  
+  \vskip 8em
+  \noindent
+  \fbox{
+    \begin{minipage}{\textwidth}
+    \centering
+    \vskip 3em
+    {\LARGE \bf \mm@title} \\
+    \vskip 3em
+    {\LARGE \mm@authors} \\
+    \vskip 3em    
+    {\Large \mm@trnumber} \\
+    \vskip 3em    
+    {\Large \mm@date}
+    \vskip 3em       
+    \end{minipage}    
+  }
+  \vfill
+  \centering This report was accepted by \mm@reviewer 
+  \vskip 3em
+  \mbox{
+    \begin{minipage}{\textwidth}
+    \centering
+    \vskip 2em
+    {\large \emph \mm@funding } \\   
+    \end{minipage}      
+   
+  }
+ 
+  \newpage
+    
+  \pagestyle{fancy}
+  \lhead{This is my name}
+  \rhead{this is page \thepage}
+  \cfoot{center of the footer!}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+\endgroup%
+}
+  
+        
